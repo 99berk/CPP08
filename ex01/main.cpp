@@ -27,8 +27,8 @@ int main(int ac, char **av)
     {
         try
         {
-            std::cout << std::endl << "== Test: Using command line arguments for " << ac -1 << " ==" << std::endl;
-            Span sp = Span(ac - 1);
+            std::cout << "== Test: Using command line arguments for " << ac -1 << " ==" << std::endl;
+            Span sp(ac - 1);
             std::list<int> lst;
             for (int i = 1; i < ac; ++i)
             {
@@ -45,8 +45,8 @@ int main(int ac, char **av)
             }
             
             sp.addRange(lst.begin(), lst.end());
-            std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
-            std::cout << "longest span: " << sp.longestSpan() << std::endl;
+            std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+            std::cout << "Longest span: " << sp.longestSpan() << std::endl;
             return 0;
         }
         catch(const std::exception& e)
@@ -58,7 +58,7 @@ int main(int ac, char **av)
     
     try
     {
-        std::cout << std::endl << "== Test 1: Overload the capacity ==" << std::endl;
+        std::cout << "== Test 1: Overload the capacity ==" << std::endl;
         Span array(3);
         
         array.addNumber(12);
@@ -74,14 +74,14 @@ int main(int ac, char **av)
     try
     {
         std::cout << std::endl << "== Test 2: Test the span with small numbers ==" << std::endl;
-        Span sp = Span(5);
+        Span sp(5);
         sp.addNumber(6);
         sp.addNumber(3);
         sp.addNumber(17);
         sp.addNumber(9);
         sp.addNumber(11);
-        std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
-        std::cout << "longest span: " << sp.longestSpan() << std::endl;
+        std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << sp.longestSpan() << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -97,8 +97,8 @@ int main(int ac, char **av)
             bigVec.push_back(i * 2);
         
         bigSpan.addRange(bigVec.begin(), bigVec.end());
-        std::cout << "Shortest span in big container: " << bigSpan.shortestSpan() << std::endl;
-        std::cout << "Longest span in big container: " << bigSpan.longestSpan() << std::endl;
+        std::cout << "Shortest span: " << bigSpan.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << bigSpan.longestSpan() << std::endl;
     }
     catch(const std::exception& e)
     {

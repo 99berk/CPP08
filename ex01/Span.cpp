@@ -4,8 +4,6 @@
 
 Span::Span() : maxSize(0) {}
 
-Span::Span(unsigned int n) : maxSize(n) {}
-
 Span::Span(const Span &other) : numbers(other.numbers), maxSize(other.maxSize) {}
 
 Span &Span::operator=(const Span &other)
@@ -20,6 +18,8 @@ Span &Span::operator=(const Span &other)
 
 Span::~Span() {}
 
+Span::Span(unsigned int n) : maxSize(n) {}
+
 void Span::addNumber(int num)
 {
 	if (numbers.size() >= maxSize)
@@ -33,21 +33,20 @@ int Span::shortestSpan() const
 		throw std::logic_error("Not enough numbers to find a span");
 	std::vector<int> sorted = numbers;
 	std::sort(sorted.begin(), sorted.end());
-	int minSpan = std::numeric_limits<int>::max();
+	int min = sorted[1] - sorted[0];
 	for (size_t i = 1; i < sorted.size(); ++i)
 	{
-		int span = sorted[i] - sorted[i - 1];
-		if (span < minSpan)
-			minSpan = span;
+		if (sorted[i] - sorted[i - 1] < min)
+			min = sorted[i] - sorted[i - 1];
 	}
-	return minSpan;
+	return min;
 }
 
 int Span::longestSpan(void) const
 {
 	if (numbers.size() < 2)
 		throw std::logic_error("Not enough numbers to find a span");
-	std::vector<int> v = numbers;
-	std::sort(v.begin(), v.end());
-	return v[v.size() - 1] - v[0];
+	std::vector<int> sorted = numbers;
+	std::sort(sorted.begin(), sorted.end());
+	return (sorted[sorted.size() - 1] - sorted[0]);
 }
