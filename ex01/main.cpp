@@ -23,7 +23,7 @@ bool isValidInteger(const char* str)
 
 int main(int ac, char **av)
 {
-     if (ac > 1)
+    if (ac > 1)
     {
         try
         {
@@ -47,7 +47,7 @@ int main(int ac, char **av)
             sp.addRange(lst.begin(), lst.end());
             std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
             std::cout << "longest span: " << sp.longestSpan() << std::endl;
-            return 0;  // Exit after processing arguments
+            return 0;
         }
         catch(const std::exception& e)
         {
@@ -55,6 +55,7 @@ int main(int ac, char **av)
             return 1;
         }
     }
+    
     try
     {
         std::cout << std::endl << "== Test 1: Overload the capacity ==" << std::endl;
@@ -69,6 +70,7 @@ int main(int ac, char **av)
     {
         std::cerr << e.what() << '\n';
     }
+    
     try
     {
         std::cout << std::endl << "== Test 2: Test the span with small numbers ==" << std::endl;
@@ -80,6 +82,23 @@ int main(int ac, char **av)
         sp.addNumber(11);
         std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
         std::cout << "longest span: " << sp.longestSpan() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        std::cout << std::endl << "== Test 3: Large container test (10000+ numbers) ==" << std::endl;
+        Span bigSpan(15000);
+        std::vector<int> bigVec;
+        for (int i = 0; i < 10000; ++i)
+            bigVec.push_back(i * 2);
+        
+        bigSpan.addRange(bigVec.begin(), bigVec.end());
+        std::cout << "Shortest span in big container: " << bigSpan.shortestSpan() << std::endl;
+        std::cout << "Longest span in big container: " << bigSpan.longestSpan() << std::endl;
     }
     catch(const std::exception& e)
     {

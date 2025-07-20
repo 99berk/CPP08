@@ -46,7 +46,7 @@ int Span::shortestSpan() const
 int Span::longestSpan(void) const
 {
 	if (numbers.size() < 2)
-		throw std::runtime_error("Not enough numbers to find a span");
+		throw std::logic_error("Not enough numbers to find a span");
 	std::vector<int> v = numbers;
 	std::sort(v.begin(), v.end());
 	return v[v.size() - 1] - v[0];
