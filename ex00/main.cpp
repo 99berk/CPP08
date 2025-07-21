@@ -15,7 +15,6 @@ int main()
 
 	try
 	{
-		
 		std::vector<int>::iterator itVec = easyfind(vec, 3);
 		std::cout << "Found in vector: " << *itVec << std::endl;
 

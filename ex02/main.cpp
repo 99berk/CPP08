@@ -52,8 +52,10 @@ int main()
     
     std::list<int>::iterator lit = lst.begin();
     std::list<int>::iterator lite = lst.end();
+
     ++lit;
     --lit;
+    
     while (lit != lite)
     {
         std::cout << *lit << std::endl;
